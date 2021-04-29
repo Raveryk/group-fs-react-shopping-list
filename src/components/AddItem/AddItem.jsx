@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import Axios from 'react';
+import axios from 'react';
 
-function AddItem() {
+function AddItem( props ) {
+  const getGroceries = props.getGroceries;
 
   const [itemName, setItemName] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -10,6 +11,24 @@ function AddItem() {
 const handleSubmit = () => {
   event.preventDefault();
   console.log('click');
+  const newItem = [
+    {name: itemName},
+    {quantity: quantity},
+    {unit: unit}
+  ]
+  axios.post('/list', newItem)
+  .then(response => {
+    console.log('added new item to grocery list', response);
+    setItemName('');
+    setQuantity('');
+    setUnit('');
+    getGroceries();
+  })
+  .catch(error => {
+    console.log('Error adding new item', error);
+    alert('unable to add new item to the list');
+  })
+  console.log(newItem);
 }
 
   return(
