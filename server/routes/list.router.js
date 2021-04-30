@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 // POST route to add new grocery items to the database
 router.post('/', (req, res) => {
     const groceryItem = req.body;
+    
     const sqlText = `INSERT INTO items (name, quantity, unit)
                     VALUES ($1, $2, $3)`;
     // The $1, $2, $3 gets substituted with the values from the array below
