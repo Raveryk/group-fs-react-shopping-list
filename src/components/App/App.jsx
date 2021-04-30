@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
 import ShoppingList from '../ShoppingList/ShoppingList'
@@ -24,6 +24,7 @@ function App() {
         .catch(error => {
             console.log('Something went wrong with GET:', error);
         })
+
     
     }
 
