@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import axios from 'react';
+import axios from 'axios';
 
 function AddItem( props ) {
   const getGroceries = props.getGroceries;
@@ -7,15 +7,15 @@ function AddItem( props ) {
   const [itemName, setItemName] = useState('');
   const [quantity, setQuantity] = useState('');
   const [unit, setUnit] = useState('');
-
+  console.log(itemName);
 const handleSubmit = () => {
   event.preventDefault();
   console.log('click');
-  const newItem = [
-    {name: itemName},
-    {quantity: quantity},
-    {unit: unit}
-  ]
+  const newItem = {
+    name: itemName,
+    quantity: Number(quantity),
+    unit: unit}
+  console.log(newItem);
   axios.post('/list', newItem)
   .then(response => {
     console.log('added new item to grocery list', response);
