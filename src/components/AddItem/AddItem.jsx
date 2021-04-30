@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 
-//retrieves 
+// retrieves items from the form and adds them to the database
 function AddItem( props ) {
   const getGroceries = props.getGroceries;
 
@@ -14,12 +14,14 @@ const handleSubmit = () => {
   console.log('click');
   const newItem = {
     name: itemName,
+    //converts quantity to a number
     quantity: Number(quantity),
     unit: unit}
   console.log(newItem);
   axios.post('/list', newItem)
   .then(response => {
     console.log('added new item to grocery list', response);
+    //clears input and should prompt display render once function is working
     setItemName('');
     setQuantity('');
     setUnit('');
@@ -32,6 +34,7 @@ const handleSubmit = () => {
   console.log(newItem);
 }
 
+//HTML for form used to input new items into shopping list
   return(
     <>
     <h2>Add an Item</h2>
@@ -48,4 +51,5 @@ const handleSubmit = () => {
   )
 }
 
+//exports to be used in app.jsx
 export default AddItem;
