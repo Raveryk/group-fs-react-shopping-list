@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '../Header/Header.jsx'
+import AddItem from '../AddItem/AddItem'
 import './App.css';
 import ShoppingList from '../ShoppingList/ShoppingList'
 import axios from 'react';
@@ -38,6 +39,7 @@ function App() {
 
             <ShoppingList shoppingList={shoppingList} getGroceries={getGroceries}/>
             </main>
+            <AddItem />
         </div>
     );
 }
