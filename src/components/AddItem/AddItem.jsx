@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 
+//retrieves 
 function AddItem( props ) {
   const getGroceries = props.getGroceries;
 
